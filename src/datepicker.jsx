@@ -65,8 +65,8 @@ var DatePicker = React.createClass({
     tetherConstraints: React.PropTypes.array,
     title: React.PropTypes.string,
     todayButton: React.PropTypes.string,
-    utcOffset: React.PropTypes.number
-    footer: React.PropTypes.element,
+    utcOffset: React.PropTypes.number,
+    footer: React.PropTypes.element
   },
 
   getDefaultProps () {
