@@ -66,6 +66,7 @@ var DatePicker = React.createClass({
     title: React.PropTypes.string,
     todayButton: React.PropTypes.string,
     utcOffset: React.PropTypes.number
+    footer: React.PropTypes.element,
   },
 
   getDefaultProps () {
@@ -223,6 +224,7 @@ var DatePicker = React.createClass({
         outsideClickIgnoreClass={outsideClickIgnoreClass}
         fixedHeight={this.props.fixedHeight}
         monthsShown={this.props.monthsShown}
+        footer={this.props.footer}
         onDropdownFocus={this.handleDropdownFocus}/>
   },
 

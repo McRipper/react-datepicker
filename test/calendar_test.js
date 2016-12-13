@@ -169,6 +169,15 @@ describe('Calendar', function () {
     expect(calendar.state().date.isSame(todayInAuckland, 'day'))
   })
 
+  it('should show the footer if supplied', function () {
+    var Footer = function() {
+      return <div/>
+    }
+    var calendar = getCalendar({footer: Footer})
+    var footer = calendar.find('.react-datepicker__footer')
+    expect(footer).to.have.length(0)
+  })
+
   it('should track the currently hovered day', () => {
     const calendar = mount(
       <Calendar

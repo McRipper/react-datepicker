@@ -50,7 +50,8 @@ var Calendar = React.createClass({
     showYearDropdown: React.PropTypes.bool,
     startDate: React.PropTypes.object,
     todayButton: React.PropTypes.string,
-    utcOffset: React.PropTypes.number
+    utcOffset: React.PropTypes.number,
+    footer: React.PropTypes.element,
   },
 
   mixins: [require('react-onclickoutside')],
@@ -240,6 +241,17 @@ var Calendar = React.createClass({
     )
   },
 
+  renderFooter () {
+    if (!this.props.footer) {
+      return
+    }
+    return (
+      <footer className="react-datepicker__footer">
+        {this.props.footer}
+      </footer>
+    )
+  },
+
   renderMonths () {
     var monthList = []
     for (var i = 0; i < this.props.monthsShown; ++i) {
@@ -293,6 +305,7 @@ var Calendar = React.createClass({
         {this.renderNextMonthButton()}
         {this.renderMonths()}
         {this.renderTodayButton()}
+        {this.renderFooter()}
       </div>
     )
   }
