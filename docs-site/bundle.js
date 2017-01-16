@@ -36675,6 +36675,8 @@
 	    excludeDates: _react2.default.PropTypes.array,
 	    filterDate: _react2.default.PropTypes.func,
 	    fixedHeight: _react2.default.PropTypes.bool,
+	    footer: _react2.default.PropTypes.element,
+	    hideDaysOutsideMonth: _react2.default.PropTypes.bool,
 	    highlightDates: _react2.default.PropTypes.array,
 	    id: _react2.default.PropTypes.string,
 	    includeDates: _react2.default.PropTypes.array,
@@ -36708,8 +36710,7 @@
 	    tetherConstraints: _react2.default.PropTypes.array,
 	    title: _react2.default.PropTypes.string,
 	    todayButton: _react2.default.PropTypes.string,
-	    utcOffset: _react2.default.PropTypes.number,
-	    footer: _react2.default.PropTypes.element
+	    utcOffset: _react2.default.PropTypes.number
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -36848,6 +36849,7 @@
 	      highlightDates: this.props.highlightDates,
 	      includeDates: this.props.includeDates,
 	      peekNextMonth: this.props.peekNextMonth,
+	      hideDaysOutsideMonth: this.props.hideDaysOutsideMonth,
 	      showMonthDropdown: this.props.showMonthDropdown,
 	      showYearDropdown: this.props.showYearDropdown,
 	      scrollableYearDropdown: this.props.scrollableYearDropdown,
@@ -52110,6 +52112,8 @@
 	    excludeDates: _react2.default.PropTypes.array,
 	    filterDate: _react2.default.PropTypes.func,
 	    fixedHeight: _react2.default.PropTypes.bool,
+	    footer: _react2.default.PropTypes.element,
+	    hideDaysOutsideMonth: _react2.default.PropTypes.bool,
 	    highlightDates: _react2.default.PropTypes.array,
 	    includeDates: _react2.default.PropTypes.array,
 	    locale: _react2.default.PropTypes.string,
@@ -52129,8 +52133,7 @@
 	    showYearDropdown: _react2.default.PropTypes.bool,
 	    startDate: _react2.default.PropTypes.object,
 	    todayButton: _react2.default.PropTypes.string,
-	    utcOffset: _react2.default.PropTypes.number,
-	    footer: _react2.default.PropTypes.element
+	    utcOffset: _react2.default.PropTypes.number
 	  },
 
 	  mixins: [__webpack_require__(578)],
@@ -52355,6 +52358,7 @@
 	          minDate: this.props.minDate,
 	          maxDate: this.props.maxDate,
 	          excludeDates: this.props.excludeDates,
+	          hideDaysOutsideMonth: this.props.hideDaysOutsideMonth,
 	          highlightDates: this.props.highlightDates,
 	          selectingDate: this.state.selectingDate,
 	          includeDates: this.props.includeDates,
@@ -56935,6 +56939,7 @@
 	    excludeDates: _react2.default.PropTypes.array,
 	    filterDate: _react2.default.PropTypes.func,
 	    fixedHeight: _react2.default.PropTypes.bool,
+	    hideDaysOutsideMonth: _react2.default.PropTypes.bool,
 	    highlightDates: _react2.default.PropTypes.array,
 	    includeDates: _react2.default.PropTypes.array,
 	    maxDate: _react2.default.PropTypes.object,
@@ -56989,6 +56994,7 @@
 	        maxDate: this.props.maxDate,
 	        excludeDates: this.props.excludeDates,
 	        includeDates: this.props.includeDates,
+	        hideDaysOutsideMonth: this.props.hideDaysOutsideMonth,
 	        highlightDates: this.props.highlightDates,
 	        selectingDate: this.props.selectingDate,
 	        filterDate: this.props.filterDate,
@@ -57065,6 +57071,7 @@
 	    endDate: _react2.default.PropTypes.object,
 	    excludeDates: _react2.default.PropTypes.array,
 	    filterDate: _react2.default.PropTypes.func,
+	    hideDaysOutsideMonth: _react2.default.PropTypes.bool,
 	    highlightDates: _react2.default.PropTypes.array,
 	    includeDates: _react2.default.PropTypes.array,
 	    maxDate: _react2.default.PropTypes.object,
@@ -57106,6 +57113,7 @@
 	        maxDate: _this.props.maxDate,
 	        excludeDates: _this.props.excludeDates,
 	        includeDates: _this.props.includeDates,
+	        hideDaysOutsideMonth: _this.props.hideDaysOutsideMonth,
 	        highlightDates: _this.props.highlightDates,
 	        selectingDate: _this.props.selectingDate,
 	        filterDate: _this.props.filterDate,
@@ -57158,6 +57166,7 @@
 	    endDate: _react2.default.PropTypes.object,
 	    excludeDates: _react2.default.PropTypes.array,
 	    filterDate: _react2.default.PropTypes.func,
+	    hideDaysOutsideMonth: _react2.default.PropTypes.bool,
 	    highlightDates: _react2.default.PropTypes.array,
 	    includeDates: _react2.default.PropTypes.array,
 	    maxDate: _react2.default.PropTypes.object,
@@ -57178,11 +57187,13 @@
 	    };
 	  },
 	  handleClick: function handleClick(event) {
+	    if (this.props.hideDaysOutsideMonth && this.isOutsideMonth()) return;
 	    if (!this.isDisabled() && this.props.onClick) {
 	      this.props.onClick(event);
 	    }
 	  },
 	  handleMouseEnter: function handleMouseEnter(event) {
+	    if (this.props.hideDaysOutsideMonth && this.isOutsideMonth()) return;
 	    if (!this.isDisabled() && this.props.onMouseEnter) {
 	      this.props.onMouseEnter(event);
 	    }
@@ -57322,7 +57333,7 @@
 	        onMouseEnter: this.handleMouseEnter,
 	        'aria-label': 'day-' + this.props.day.date(),
 	        role: 'option' },
-	      this.props.day.date()
+	      this.isOutsideMonth() && this.props.hideDaysOutsideMonth ? null : this.props.day.date()
 	    );
 	  }
 	});

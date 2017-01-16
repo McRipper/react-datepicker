@@ -32,6 +32,8 @@ var DatePicker = React.createClass({
     excludeDates: React.PropTypes.array,
     filterDate: React.PropTypes.func,
     fixedHeight: React.PropTypes.bool,
+    footer: React.PropTypes.element,
+    hideDaysOutsideMonth: React.PropTypes.bool,
     highlightDates: React.PropTypes.array,
     id: React.PropTypes.string,
     includeDates: React.PropTypes.array,
@@ -65,8 +67,7 @@ var DatePicker = React.createClass({
     tetherConstraints: React.PropTypes.array,
     title: React.PropTypes.string,
     todayButton: React.PropTypes.string,
-    utcOffset: React.PropTypes.number,
-    footer: React.PropTypes.element
+    utcOffset: React.PropTypes.number
   },
 
   getDefaultProps () {
@@ -216,6 +217,7 @@ var DatePicker = React.createClass({
         highlightDates={this.props.highlightDates}
         includeDates={this.props.includeDates}
         peekNextMonth={this.props.peekNextMonth}
+        hideDaysOutsideMonth={this.props.hideDaysOutsideMonth}
         showMonthDropdown={this.props.showMonthDropdown}
         showYearDropdown={this.props.showYearDropdown}
         scrollableYearDropdown={this.props.scrollableYearDropdown}

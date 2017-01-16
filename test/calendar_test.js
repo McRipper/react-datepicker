@@ -170,9 +170,12 @@ describe('Calendar', function () {
   })
 
   it('should show the footer if supplied', function () {
-    var Footer = function() {
-      return <div/>
-    }
+    var Footer = React.createClass({
+      displayName: 'Footer',
+      render: function () {
+        return <div/>
+      }
+    })
     var calendar = getCalendar({footer: Footer})
     var footer = calendar.find('.react-datepicker__footer')
     expect(footer).to.have.length(0)
