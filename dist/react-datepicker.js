@@ -5743,17 +5743,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  getClassNames: function getClassNames() {
 	    return (0, _classnames2.default)('react-datepicker__day', {
-	      'react-datepicker__day--disabled': this.isDisabled(),
-	      'react-datepicker__day--selected': this.isSameDay(this.props.selected),
-	      'react-datepicker__day--highlighted': this.isHighlighted(),
-	      'react-datepicker__day--range-start': this.isRangeStart(),
-	      'react-datepicker__day--range-end': this.isRangeEnd(),
-	      'react-datepicker__day--in-range': this.isInRange(),
-	      'react-datepicker__day--in-selecting-range': this.isInSelectingRange(),
-	      'react-datepicker__day--selecting-range-start': this.isSelectingRangeStart(),
-	      'react-datepicker__day--selecting-range-end': this.isSelectingRangeEnd(),
-	      'react-datepicker__day--today': this.isSameDay(_moment2.default.utc().utcOffset(this.props.utcOffset)),
-	      'react-datepicker__day--weekend': this.isWeekend(),
+	      'react-datepicker__day--disabled': this.isDisabled() && !this.props.hideDaysOutsideMonth,
+	      'react-datepicker__day--selected': this.isSameDay(this.props.selected) && !this.props.hideDaysOutsideMonth,
+	      'react-datepicker__day--highlighted': this.isHighlighted() && !this.props.hideDaysOutsideMonth,
+	      'react-datepicker__day--range-start': this.isRangeStart() && !this.props.hideDaysOutsideMonth,
+	      'react-datepicker__day--range-end': this.isRangeEnd() && !this.props.hideDaysOutsideMonth,
+	      'react-datepicker__day--in-range': this.isInRange() && !this.props.hideDaysOutsideMonth,
+	      'react-datepicker__day--in-selecting-range': this.isInSelectingRange() && !this.props.hideDaysOutsideMonth,
+	      'react-datepicker__day--selecting-range-start': this.isSelectingRangeStart() && !this.props.hideDaysOutsideMonth,
+	      'react-datepicker__day--selecting-range-end': this.isSelectingRangeEnd() && !this.props.hideDaysOutsideMonth,
+	      'react-datepicker__day--today': this.isSameDay(_moment2.default.utc().utcOffset(this.props.utcOffset)) && !this.props.hideDaysOutsideMonth,
+	      'react-datepicker__day--weekend': this.isWeekend() && !this.props.hideDaysOutsideMonth,
 	      'react-datepicker__day--outside-month': this.isOutsideMonth()
 	    });
 	  },
