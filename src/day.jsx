@@ -11,6 +11,7 @@ var Day = React.createClass({
     endDate: React.PropTypes.object,
     excludeDates: React.PropTypes.array,
     filterDate: React.PropTypes.func,
+    hideDaysOutsideMonth: React.PropTypes.bool,
     highlightDates: React.PropTypes.array,
     includeDates: React.PropTypes.array,
     maxDate: React.PropTypes.object,
@@ -31,12 +32,16 @@ var Day = React.createClass({
     }
   },
   handleClick (event) {
+    if (this.props.hideDaysOutsideMonth && this.isOutsideMonth())
+      return
     if (!this.isDisabled() && this.props.onClick) {
       this.props.onClick(event)
     }
   },
 
   handleMouseEnter (event) {
+    if (this.props.hideDaysOutsideMonth && this.isOutsideMonth())
+      return
     if (!this.isDisabled() && this.props.onMouseEnter) {
       this.props.onMouseEnter(event)
     }
@@ -155,7 +160,7 @@ var Day = React.createClass({
           onMouseEnter={this.handleMouseEnter}
           aria-label={`day-${this.props.day.date()}`}
           role="option">
-          {this.props.day.date()}
+          {this.isOutsideMonth() && this.props.hideDaysOutsideMonth ? null : this.props.day.date()}
       </div>
     )
   }

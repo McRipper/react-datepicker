@@ -31,6 +31,8 @@ var Calendar = React.createClass({
     excludeDates: React.PropTypes.array,
     filterDate: React.PropTypes.func,
     fixedHeight: React.PropTypes.bool,
+    footer: React.PropTypes.element,
+    hideDaysOutsideMonth: React.PropTypes.bool,
     highlightDates: React.PropTypes.array,
     includeDates: React.PropTypes.array,
     locale: React.PropTypes.string,
@@ -50,8 +52,7 @@ var Calendar = React.createClass({
     showYearDropdown: React.PropTypes.bool,
     startDate: React.PropTypes.object,
     todayButton: React.PropTypes.string,
-    utcOffset: React.PropTypes.number,
-    footer: React.PropTypes.element,
+    utcOffset: React.PropTypes.number
   },
 
   mixins: [require('react-onclickoutside')],
@@ -279,6 +280,7 @@ var Calendar = React.createClass({
                 minDate={this.props.minDate}
                 maxDate={this.props.maxDate}
                 excludeDates={this.props.excludeDates}
+                hideDaysOutsideMonth={this.props.hideDaysOutsideMonth}
                 highlightDates={this.props.highlightDates}
                 selectingDate={this.state.selectingDate}
                 includeDates={this.props.includeDates}
