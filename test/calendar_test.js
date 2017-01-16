@@ -176,7 +176,6 @@ describe('Calendar', function () {
         return <div/>
       }
     })
-    debugger
     var calendar = getCalendar({footer: Footer})
     var footer = calendar.find('.react-datepicker__footer')
     expect(footer).to.have.length(0)
