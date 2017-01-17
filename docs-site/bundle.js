@@ -57309,22 +57309,30 @@
 	    return this.props.month !== undefined && this.props.month !== this.props.day.month();
 	  },
 	  getClassNames: function getClassNames() {
-	    var isDayOutsideMonthVisible = this.isOutsideMonth() && !this.props.hideDaysOutsideMonth;
+	    var classNames = {};
 
-	    return (0, _classnames2.default)('react-datepicker__day', {
-	      'react-datepicker__day--disabled': this.isDisabled() && isDayOutsideMonthVisible,
-	      'react-datepicker__day--selected': this.isSameDay(this.props.selected) && isDayOutsideMonthVisible,
-	      'react-datepicker__day--highlighted': this.isHighlighted() && isDayOutsideMonthVisible,
-	      'react-datepicker__day--range-start': this.isRangeStart() && isDayOutsideMonthVisible,
-	      'react-datepicker__day--range-end': this.isRangeEnd() && isDayOutsideMonthVisible,
-	      'react-datepicker__day--in-range': this.isInRange() && isDayOutsideMonthVisible,
-	      'react-datepicker__day--in-selecting-range': this.isInSelectingRange() && isDayOutsideMonthVisible,
-	      'react-datepicker__day--selecting-range-start': this.isSelectingRangeStart() && isDayOutsideMonthVisible,
-	      'react-datepicker__day--selecting-range-end': this.isSelectingRangeEnd() && isDayOutsideMonthVisible,
-	      'react-datepicker__day--today': this.isSameDay(_moment2.default.utc().utcOffset(this.props.utcOffset)) && isDayOutsideMonthVisible,
-	      'react-datepicker__day--weekend': this.isWeekend() && isDayOutsideMonthVisible,
-	      'react-datepicker__day--outside-month': this.isOutsideMonth()
-	    });
+	    if (this.props.hideDaysOutsideMonth && this.isOutsideMonth()) {
+	      classNames = Object.assign({}, classNames, {
+	        'react-datepicker__day--outside-month': this.isOutsideMonth()
+	      });
+	    } else {
+	      classNames = Object.assign({}, classNames, {
+	        'react-datepicker__day--disabled': this.isDisabled() && isDayOutsideMonthVisible,
+	        'react-datepicker__day--selected': this.isSameDay(this.props.selected) && isDayOutsideMonthVisible,
+	        'react-datepicker__day--highlighted': this.isHighlighted() && isDayOutsideMonthVisible,
+	        'react-datepicker__day--range-start': this.isRangeStart() && isDayOutsideMonthVisible,
+	        'react-datepicker__day--range-end': this.isRangeEnd() && isDayOutsideMonthVisible,
+	        'react-datepicker__day--in-range': this.isInRange() && isDayOutsideMonthVisible,
+	        'react-datepicker__day--in-selecting-range': this.isInSelectingRange() && isDayOutsideMonthVisible,
+	        'react-datepicker__day--selecting-range-start': this.isSelectingRangeStart() && isDayOutsideMonthVisible,
+	        'react-datepicker__day--selecting-range-end': this.isSelectingRangeEnd() && isDayOutsideMonthVisible,
+	        'react-datepicker__day--today': this.isSameDay(_moment2.default.utc().utcOffset(this.props.utcOffset)) && isDayOutsideMonthVisible,
+	        'react-datepicker__day--weekend': this.isWeekend() && isDayOutsideMonthVisible,
+	        'react-datepicker__day--outside-month': this.isOutsideMonth()
+	      });
+	    }
+
+	    return (0, _classnames2.default)('react-datepicker__day', classNames);
 	  },
 	  render: function render() {
 	    return _react2.default.createElement(
