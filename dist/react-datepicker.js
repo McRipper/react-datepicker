@@ -352,7 +352,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          constraints: this.props.tetherConstraints },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'react-datepicker__input-container' },
+	          { className: 'react-datepicker__input-container', onClick: this.onInputClick },
 	          this.renderDateInput(),
 	          this.renderClearButton(),
 	          this.props.children
