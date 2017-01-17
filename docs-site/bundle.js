@@ -36917,7 +36917,8 @@
 	          'div',
 	          { className: 'react-datepicker__input-container' },
 	          this.renderDateInput(),
-	          this.renderClearButton()
+	          this.renderClearButton(),
+	          this.props.children
 	        ),
 	        calendar
 	      );
@@ -37047,7 +37048,8 @@
 	    }, rest, {
 	      value: this.state.value,
 	      onBlur: this.handleBlur,
-	      onChange: this.handleChange }));
+	      onChange: this.handleChange,
+	      autocomplete: 'off' }));
 	  }
 	});
 

@@ -288,6 +288,7 @@ var DatePicker = React.createClass({
           <div className="react-datepicker__input-container">
             {this.renderDateInput()}
             {this.renderClearButton()}
+            {this.props.children}
           </div>
           {calendar}
         </TetherComponent>
