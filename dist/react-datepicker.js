@@ -486,7 +486,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      value: this.state.value,
 	      onBlur: this.handleBlur,
 	      onChange: this.handleChange,
-	      autocomplete: 'off' }));
+	      autoComplete: 'off' }));
 	  }
 	});
 
